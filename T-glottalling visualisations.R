@@ -32,21 +32,21 @@ pcts <- read.csv("Glottal percentages for each context for each speaker.csv")
 # exclude only the most rubbish tokens for the initial graph
 broad.data <- master %>% filter(!grepl('imitat|cuts|laugh|count', notes)) %>% 
   filter(!grepl('obstruent|laughter|other', followingContextSO)) %>%
-  filter(precedingSound != 's' & precedingSound != 'k', speaker != 'Jay') %>%
+  filter(precedingSound != 's' & precedingSound != 'k', speaker != 'Alex') %>%
   filter(!grepl('other', overallContextMedium)) %>%
   droplevels
 
 # exclude the pre-C, unreleased and other tokens for the statistical modelling
 good.data <- master %>% filter(!grepl('imitat|cuts|laugh|count', notes)) %>% 
   filter(!grepl('obstruent|laughter|other', followingContextSO)) %>%
-  filter(precedingSound != 's' & precedingSound != 'k', speaker != 'Jay',
+  filter(precedingSound != 's' & precedingSound != 'k', speaker != 'Alex',
          tProduction != 'unreleased' & tProduction != 'other') %>%
   filter(!grepl('C|other', overallContextMedium)) %>%
   droplevels
 
 # filter to remove the pre-C rows and Jay and select only the most useful columns
 pcts <- pcts %>% filter(overallContextMedium != '_#C' & overallContextMedium != '_C') %>%
-  filter(speaker != 'Jay') %>%
+  filter(speaker != 'Alex') %>%
   select(speaker, gender, school, previousSchoolType, ClassScore9, overallContextMedium, totalTokens, glottalPercent) %>%
   rename('context' = overallContextMedium, 'class' = ClassScore9, 'prevSch' = previousSchoolType) %>%
   droplevels()
