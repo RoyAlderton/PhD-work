@@ -17,7 +17,7 @@ master <- read.csv("AllTMaster.csv")
 ## old version of good.data, which includes pre-C tokens
 # good.data <- master %>% filter(!grepl('imitat|cuts|laugh|count', notes)) %>% 
 #  filter(!grepl('obstruent|laughter|other', followingContextSO)) %>%
-#  filter(precedingSound != 's' & precedingSound != 'k', speaker != 'Jay',
+#  filter(precedingSound != 's' & precedingSound != 'k', speaker != 'Alex',
 #        tProduction != 'unreleased' & tProduction != 'other') %>%
 # droplevels
 # View(good.data)
@@ -25,7 +25,7 @@ master <- read.csv("AllTMaster.csv")
 ##### new version of good.data that excludes the pre-C tokens!
 good.data <- master %>% filter(!grepl('imitat|cuts|laugh|count', notes)) %>% 
   filter(!grepl('obstruent|laughter|other', followingContextSO)) %>%
-  filter(precedingSound != 's' & precedingSound != 'k', speaker != 'Jay',
+  filter(precedingSound != 's' & precedingSound != 'k', speaker != 'Alex',
          tProduction != 'unreleased' & tProduction != 'other') %>%
   filter(!grepl('C|other', overallContextMedium)) %>%
   droplevels
